@@ -202,7 +202,4 @@ function projectorCtrl($scope,Storage) {
 
   $scope.initForm();
 
-  Socialite.load('social-buttons');
-
-
 }
