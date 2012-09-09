@@ -2,7 +2,7 @@
 <html lang="en" ng-app="myApp">
 <head>
   <meta charset="utf-8">
-  <title>Simply Do - Balance Projector</title>
+  <title>Balance Projector</title>
   <link rel="stylesheet" href="css/default.css"/>
 </head>
 <body>
@@ -42,10 +42,10 @@
                 <option value="2.16666666666667">every 2 weeks</option>
                 <option value="1">monthly</option>
               </select>
-              <a class="" ng-click="removeIncome($index);"><i class="icon-minus-sign"></i></a>
+              <a class="" ng-click="removeIncome($index);"></a>
             </li>
           </ul>
-          <button class="btn btn-indented" ng-click="addIncome();"><i class="icon-plus"></i> Add</button>
+          <button class="btn btn-indented" ng-click="addIncome();">Add</button>
         </div>
 
 
@@ -64,10 +64,10 @@
                 <option value="2.16666666666667">Every 2 Weeks</option>
                 <option value="1">Monthly</option>
               </select>
-              <a class="" ng-click="removeExpense($index);"><i class="icon-minus-sign"></i></a>
+              <a class="" ng-click="removeExpense($index);"></a>
             </li>
           </ul>
-          <button class="btn btn-indented" ng-click="addExpense();"><i class="icon-plus"></i> Add</button>
+          <button class="btn btn-indented" ng-click="addExpense();">Add</button>
         </div>
 
         
@@ -80,16 +80,16 @@
               <input type="text" ng-model="transaction.amount" placeholder="Enter Amount" class="span1" />
               <select class="span2" ng-model='transaction.month' ng-options="getMonthLabel(value) for value in [1,2,3,4,5,6,7,8,9,10,11,12]">
               </select>
-              <a class="" ng-click="removeTransaction($index);"><i class="icon-minus-sign"></i></a>
+              <a class="" ng-click="removeTransaction($index);"></a>
             </li>
           </ul>
-          <button class="btn btn-indented" ng-click="addTransaction();"><i class="icon-plus"></i> Add</button>
+          <button class="btn btn-indented" ng-click="addTransaction();">Add</button>
         </div>
 
         <div class="store" ng-show="storageSupport">
           <p>
-            <button class="btn btn-success" ng-click="save();"><i class="icon-hdd icon-white"></i> Save</button>
-            <button class="btn btn-danger" ng-click="clear();"><i class="icon-trash icon-white"></i> Erase</button>
+            <button class="btn btn-success" ng-click="save();">Save</button>
+            <button class="btn btn-danger" ng-click="clear();">Erase</button>
           </p>
           <p>Important: You data is stored locally on this very device only.</p>
         </div>
@@ -150,17 +150,12 @@
     </div>
   </div>
 
-
-
   <script src="lib/angular/angular.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
-
-  
-
 
 </body>
 </html>
