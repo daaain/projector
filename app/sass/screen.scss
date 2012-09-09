@@ -1,4 +1,12 @@
-@import "mixins.less";
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "compass/css3/text-shadow";
 
 body {
   background-color:#FFF;
@@ -68,9 +76,7 @@ table {
 }
 
 .box {
-
-  .rounded-corners(8px);
-
+  @include border-radius(8px);
   margin-bottom:20px;
 }
 
@@ -87,17 +93,17 @@ table {
   padding-top:60px;
   padding-bottom:30px;
   border-bottom:1px solid #666;
-  .box-shadow(0px, 3px, 0px, rgba(0,0,0,0.2);
+  @include box-shadow(0px 3px 0px rgba(0,0,0,0.2));
   h1 {
     font-size:4em;
     margin-bottom:20px;
     margin-top:50px;
     color:#FFF;
-    .text-shadow(0px, -1px, 0px, rgba(0,0,0,0.5));
+    @include text-shadow(0px -1px 0px rgba(0,0,0,0.5));
   }
   p {
     font-size:1.5em;
     color:#F9F2E7;
-    .text-shadow(0px, -1px, 0px, rgba(0,0,0,0.5));
+    @include text-shadow(0px -1px 0px rgba(0,0,0,0.5));
   }
 }
