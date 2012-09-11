@@ -2,7 +2,10 @@
 
 Balance Projector can provide quick insights into your immediate financial future. The real time interface updates on every change and makes somewhat abstract numbers very tangible.
 
-Built with AngularJS by Google - http://angularjs.org/
+Built with: 
+* [Google AngularJS](http://angularjs.org/)
+* Twitter Bootstrap – Sass version
+* PouchDB 
 
 Based on: https://github.com/SimplyDo/projector
 
