@@ -2080,7 +2080,7 @@ table .span12 {
   *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url("/images/glyphicons-halflings.png");
+  background-image: url('../compass_img/glyphicons-halflings.png?1347322882');
   background-position: 14px 14px;
   background-repeat: no-repeat;
   margin-top: 1px;
@@ -2095,7 +2095,7 @@ table .span12 {
 .dropdown-menu > li > a:hover > [class*=" icon-"],
 .dropdown-menu > .active > a > [class^="icon-"],
 .dropdown-menu > .active > a > [class*=" icon-"] {
-  background-image: url("/images/glyphicons-halflings-white.png");
+  background-image: url('../compass_img/glyphicons-halflings-white.png?1347322882');
 }
 
 /* line 42, ../../../../../../../.rbenv/versions/1.9.3-p125/lib/ruby/gems/1.9.1/gems/bootstrap-sass-2.1.0.0/vendor/assets/stylesheets/bootstrap/_sprites.scss */
@@ -7365,78 +7365,78 @@ a.label:hover, a.badge:hover {
     overflow: visible !important;
   }
 }
-/* line 15, ../sass/screen.scss */
+/* line 18, ../sass/screen.scss */
 body {
   background-color: #FFF;
 }
 
-/* line 23, ../sass/screen.scss */
+/* line 26, ../sass/screen.scss */
 h2 {
   font-size: 1.1em;
   color: #00A8C6;
   margin: 0px 0px 0.5em 0px;
 }
 
-/* line 29, ../sass/screen.scss */
+/* line 32, ../sass/screen.scss */
 ul {
   list-style: none;
   margin: 0px;
 }
-/* line 33, ../sass/screen.scss */
+/* line 36, ../sass/screen.scss */
 ul li span {
   width: 15px;
   display: inline-block;
 }
-/* line 38, ../sass/screen.scss */
+/* line 41, ../sass/screen.scss */
 ul li.active-false input[type=text], ul li.active-false select {
   opacity: 0.5;
   -moz-opacity: 0.5;
   filter: alpha(opacity=5);
 }
 
-/* line 47, ../sass/screen.scss */
+/* line 50, ../sass/screen.scss */
 button.btn-indented {
   margin-left: 18px;
 }
 
-/* line 52, ../sass/screen.scss */
+/* line 55, ../sass/screen.scss */
 input[type="text"] {
   vertical-align: 0px;
 }
 
-/* line 57, ../sass/screen.scss */
+/* line 60, ../sass/screen.scss */
 select {
   vertical-align: 0px;
 }
 
-/* line 61, ../sass/screen.scss */
+/* line 64, ../sass/screen.scss */
 table {
   background-color: #FFF;
   border-top: 1px solid #DDD;
 }
-/* line 64, ../sass/screen.scss */
+/* line 67, ../sass/screen.scss */
 table td, table th {
   padding: 12px 10px !important;
   font-size: 1.1em;
 }
-/* line 67, ../sass/screen.scss */
+/* line 70, ../sass/screen.scss */
 table td.number, table th.number {
   text-align: right;
 }
-/* line 70, ../sass/screen.scss */
+/* line 73, ../sass/screen.scss */
 table td.positive, table th.positive {
   color: green;
 }
-/* line 73, ../sass/screen.scss */
+/* line 76, ../sass/screen.scss */
 table td.negative, table th.negative {
   color: red;
 }
-/* line 77, ../sass/screen.scss */
+/* line 80, ../sass/screen.scss */
 table th {
   color: #00A8C6;
 }
 
-/* line 82, ../sass/screen.scss */
+/* line 85, ../sass/screen.scss */
 .box {
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -7446,16 +7446,16 @@ table th {
   margin-bottom: 20px;
 }
 
-/* line 87, ../sass/screen.scss */
+/* line 90, ../sass/screen.scss */
 .store {
   margin-top: 40px;
 }
-/* line 89, ../sass/screen.scss */
+/* line 92, ../sass/screen.scss */
 .store p {
   color: #999;
 }
 
-/* line 94, ../sass/screen.scss */
+/* line 97, ../sass/screen.scss */
 #top {
   background-color: #8FBE00;
   margin-bottom: 40px;
@@ -7466,7 +7466,7 @@ table th {
   -moz-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
 }
-/* line 101, ../sass/screen.scss */
+/* line 104, ../sass/screen.scss */
 #top h1 {
   font-size: 4em;
   margin-bottom: 20px;
@@ -7474,7 +7474,7 @@ table th {
   color: #FFF;
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
 }
-/* line 108, ../sass/screen.scss */
+/* line 111, ../sass/screen.scss */
 #top p {
   font-size: 1.5em;
   color: #F9F2E7;
