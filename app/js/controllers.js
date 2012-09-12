@@ -28,7 +28,12 @@ function projectorCtrl($scope, Storage) {
 	};
 
 	$scope.addExpense = function () {
-		var newEmptyExpense = {active: true, name: '', amount: 0, frequency: 1};
+		var newEmptyExpense = {
+			active: true,
+			name: '',
+			amount: 0,
+			frequency: 1
+		};
 		$scope.expenses.push(newEmptyExpense);
 	};
 
@@ -37,7 +42,12 @@ function projectorCtrl($scope, Storage) {
 	};
 
 	$scope.addIncome = function () {
-		var newEmptyIncome = {active: true, name: '', amount: 0, frequency: 1};
+		var newEmptyIncome = {
+			active: true,
+			name: '',
+			amount: 0,
+			frequency: 1
+		};
 		$scope.incomes.push(newEmptyIncome);
 	};
 
@@ -46,7 +56,12 @@ function projectorCtrl($scope, Storage) {
 	};
 
 	$scope.addTransaction = function () {
-		var newEmptyTransaction = {active: true, name: '', amount: 0, month: 1};
+		var newEmptyTransaction = {
+			active: true,
+			name: '',
+			amount: 0,
+			month: 1
+		};
 		$scope.nonRecurring.push(newEmptyTransaction);
 	};
 
@@ -144,15 +159,6 @@ function projectorCtrl($scope, Storage) {
 		return monthNames[futureMonth] + ' ' + year;
 	};
 
-	$scope.positiveNegative = function (value) {
-		if (value > 0) {
-			return "positive";
-		}
-		if (value < 0) {
-			return "negative";
-		}
-	};
-
 	$scope.convertToNumber = function (value) {
 		var floatNumber = parseFloat(value);
 
@@ -161,11 +167,6 @@ function projectorCtrl($scope, Storage) {
 		} else {
 			return 0;
 		}
-	};
-
-	$scope.roundDown = function (number) {
-		//return Math.round(number*100)/100;
-		return Math.round(number);
 	};
 
 	$scope.initForm = function () {

@@ -1,6 +1,3 @@
-# The static content rooted in the current working directory
-# Dir.pwd =&gt; http://0.0.0.0:3000/
-#
 require 'rack-livereload'
 
 # Standalone version of Ryan Tomayko's TryStatic, originally part of Rack-Contrib gem.
