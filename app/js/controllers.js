@@ -3,203 +3,183 @@
 /* Controllers */
 
 
-function projectorCtrl($scope,Storage) {
+function projectorCtrl($scope, Storage) {
 
-  $scope.startBalance = Storage.loadObject('startBalance');
+	$scope.startBalance = Storage.getObject('startBalance');
+	$scope.expenses = Storage.getObject('expenses');
+	$scope.incomes = Storage.getObject('incomes');
+	$scope.nonRecurring = Storage.getObject('nonRecurring');
+	$scope.storageSupport = Storage.supported();
 
-  $scope.expenses = Storage.loadObject('expenses');
+	$scope.save = function () {
+		Storage.saveObject($scope.expenses, 'expenses');
+		Storage.saveObject($scope.incomes, 'incomes');
+		Storage.saveObject($scope.startBalance, 'startBalance');
+		Storage.saveObject($scope.nonRecurring, 'nonRecurring');
+	};
 
-  $scope.incomes = Storage.loadObject('incomes');
+	$scope.clear = function () {
+		Storage.clear();
+		$scope.startBalance = [];
+		$scope.expenses = [];
+		$scope.incomes = [];
+		$scope.nonRecurring = [];
+		$scope.initForm();
+	};
 
-  $scope.nonRecurring = Storage.loadObject('nonRecurring');
+	$scope.addExpense = function () {
+		var newEmptyExpense = {active: true, name: '', amount: 0, frequency: 1};
+		$scope.expenses.push(newEmptyExpense);
+	};
 
-  $scope.storageSupport = Storage.supported();
+	$scope.removeExpense = function (index) {
+		$scope.expenses.splice(index, 1);
+	};
 
+	$scope.addIncome = function () {
+		var newEmptyIncome = {active: true, name: '', amount: 0, frequency: 1};
+		$scope.incomes.push(newEmptyIncome);
+	};
 
-  $scope.save = function() {
-    Storage.saveObject($scope.expenses,'expenses');
-    Storage.saveObject($scope.incomes,'incomes');
-    Storage.saveObject($scope.startBalance,'startBalance');
-    Storage.saveObject($scope.nonRecurring,'nonRecurring');
-  }
+	$scope.removeIncome = function (index) {
+		$scope.incomes.splice(index, 1);
+	};
 
-  $scope.clear = function() {
-    Storage.clear();
-    $scope.startBalance = [];
-    $scope.expenses = [];
-    $scope.incomes = [];
-    $scope.nonRecurring = [];
-    $scope.initForm();
-  }
+	$scope.addTransaction = function () {
+		var newEmptyTransaction = {active: true, name: '', amount: 0, month: 1};
+		$scope.nonRecurring.push(newEmptyTransaction);
+	};
 
-  $scope.addExpense = function() {
-    var newEmptyExpense = {active:true, name:'', amount:0, frequency:1};
-    $scope.expenses.push(newEmptyExpense);
-  }
+	$scope.removeTransaction = function (index) {
+		$scope.nonRecurring.splice(index, 1);
+	};
 
-  $scope.removeExpense = function(index) {
-    $scope.expenses.splice(index,1);
-  }
+	$scope.tallyTransactions = function () {
+		var total = 0;
+		var oneOff = 0;
 
-  $scope.addIncome = function() {
-    var newEmptyIncome = {active:true, name:'', amount:0, frequency:1};
-    $scope.incomes.push(newEmptyIncome);
-  }
+		for (var m = 0; m < $scope.nonRecurring.length; m++) {
+			oneOff = $scope.convertToNumber($scope.nonRecurring[m].amount);
+			if (oneOff !== 0) {
+				if ($scope.nonRecurring[m].active) {
+					total = total + oneOff;
+				}
+			}
+		}
 
-  $scope.removeIncome = function(index) {
-    $scope.incomes.splice(index,1);
-  }
+		return total;
+	};
 
-  $scope.addTransaction = function() {
-    var newEmptyTransaction = {active:true, name:'', amount:0, month:1};
-    $scope.nonRecurring.push(newEmptyTransaction);
-  }
+	$scope.monthlyIncome = function () {
+		var total = 0;
+		var thisMonth;
+		for (var i = 0; i < $scope.incomes.length; i++) {
+			thisMonth = $scope.convertToNumber($scope.incomes[i].amount);
+			if (thisMonth !== 0) {
+				if ($scope.incomes[i].active) {
+					total = total + (thisMonth * $scope.incomes[i].frequency);
+				}
+			}
+		}
+		return total;
+	};
 
-  $scope.removeTransaction = function(index) {
-    $scope.nonRecurring.splice(index,1);
-  }
+	$scope.monthlyExpense = function () {
+		var total = 0;
+		var thisMonth;
+		for (var i = 0; i < $scope.expenses.length; i++) {
+			thisMonth = $scope.convertToNumber($scope.expenses[i].amount);
+			if (thisMonth !== 0) {
+				if ($scope.expenses[i].active) {
+					total = total + (thisMonth * $scope.expenses[i].frequency);
+				}
+			}
+		}
+		return total;
+	};
 
-  $scope.tallyTransactions = function() {
+	$scope.monthlyNet = function () {
+		var income = $scope.monthlyIncome();
+		var expense = $scope.monthlyExpense();
 
-    var total = 0;
-    var oneOff = 0;
+		return income - expense;
+	};
 
-    for (var m = 0; m < $scope.nonRecurring.length; m++) {
-      oneOff = $scope.convertToNumber($scope.nonRecurring[m].amount);
-      if (oneOff != 0) {
-        if ($scope.nonRecurring[m].active) {
-          total = total + oneOff;
-        }
-      }
-    }
+	$scope.montlyProjection = function () {
+		var monthByMonth = [];
+		var runningTotal = 0;
+		var oneOff = 0;
 
-    return total;
-  }
+		for (var i = 0; i < 12; i++) {
+			runningTotal = runningTotal + $scope.monthlyNet();
 
-  $scope.monthlyIncome = function() {
-    var total = 0;
-    var thisMonth;
-    for (var i = 0; i < $scope.incomes.length; i++) {
-      thisMonth = $scope.convertToNumber($scope.incomes[i].amount);
-      if (thisMonth != 0) {
-        if ($scope.incomes[i].active) {
-          total = total + (thisMonth * $scope.incomes[i].frequency);
-        }
-      }
-    }
-    return total;
-  }
+			// add applicable one-off transations
+			for (var m = 0; m < $scope.nonRecurring.length; m++) {
+				if ($scope.convertToNumber($scope.nonRecurring[m].month) === i + 1) {
+					oneOff = $scope.convertToNumber($scope.nonRecurring[m].amount);
+					if (oneOff !== 0) {
+						if ($scope.nonRecurring[m].active) {
+							runningTotal = runningTotal + oneOff;
+						}
+					}
+				}
+			}
 
-  $scope.monthlyExpense = function() {
-    var total = 0;
-    var thisMonth;
-    for (var i = 0; i < $scope.expenses.length; i++) {
-      thisMonth = $scope.convertToNumber($scope.expenses[i].amount);
-      if (thisMonth != 0) {
-        if ($scope.expenses[i].active) {
-          total = total + (thisMonth*$scope.expenses[i].frequency);
-        }
-      }
-    }
-    return total;
-  }
+			monthByMonth[i] = runningTotal;
+		}
+		return monthByMonth;
+	};
 
-  $scope.monthlyNet = function() {
+	$scope.getMonthLabel = function (monthAhead) {
+		var d = new Date();
+		var currentMonth = d.getMonth();
+		var year = d.getFullYear();
+		var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-    var income = $scope.monthlyIncome();
-    var expense = $scope.monthlyExpense();
+		var futureMonth = currentMonth + monthAhead;
+		if (futureMonth > 11) {
+			futureMonth = futureMonth - 12;
+			year = year + 1;
+		}
+		return monthNames[futureMonth] + ' ' + year;
+	};
 
-    return income - expense;
-  }
+	$scope.positiveNegative = function (value) {
+		if (value > 0) {
+			return "positive";
+		}
+		if (value < 0) {
+			return "negative";
+		}
+	};
 
-  $scope.montlyProjection = function() {
+	$scope.convertToNumber = function (value) {
+		var floatNumber = parseFloat(value);
 
-    var monthByMonth = [];
-    var runningTotal = 0;
-    var oneOff = 0;
+		if (floatNumber) {
+			return floatNumber;
+		} else {
+			return 0;
+		}
+	};
 
-    for (var i = 0; i < 12; i++) {
-      runningTotal = runningTotal + $scope.monthlyNet();
+	$scope.roundDown = function (number) {
+		//return Math.round(number*100)/100;
+		return Math.round(number);
+	};
 
-      // add applicable one-off transations
-      for (var m = 0; m < $scope.nonRecurring.length; m++) {
-        if ($scope.convertToNumber($scope.nonRecurring[m].month) == i+1) {
-          oneOff = $scope.convertToNumber($scope.nonRecurring[m].amount);
-          if (oneOff != 0) {
-            if ($scope.nonRecurring[m].active) {
-              runningTotal = runningTotal + oneOff;
-            }
-          }
-        }
-      }
+	$scope.initForm = function () {
+		if ($scope.incomes.length < 1) {
+			$scope.addIncome();
+		}
+		if ($scope.expenses.length < 1) {
+			$scope.addExpense();
+		}
+		if ($scope.nonRecurring.length < 1) {
+			$scope.addTransaction();
+		}
+	};
 
-      monthByMonth[i] = runningTotal;
-    }
-   
-    return monthByMonth;
-
-  }
-
-  $scope.getMonthLabel = function(monthAhead) {
-
-    var d = new Date;
-    var currentMonth = d.getMonth();
-    var year = d.getFullYear();
-    var monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-
-    var futureMonth = currentMonth + monthAhead;
-    if (futureMonth > 11) {
-      futureMonth = futureMonth - 12;
-      year = year + 1;
-    }
-    return monthNames[futureMonth] + ' ' + year;
-  }
-
-  $scope.positiveNegative = function(value) {
-    if (value > 0) {
-      return "positive";
-    }
-    if (value < 0) {
-      return "negative";
-    }
-  }
-
-
-  $scope.convertToNumber = function(value) {
-    
-    var floatNumber = parseFloat(value);
-
-    if (floatNumber) {
-
-      return floatNumber;
-
-    } else {
-
-     return 0;
-
-    }
-
-  }
-
-  $scope.roundDown = function(number) {
-    
-    //return Math.round(number*100)/100;
-    return Math.round(number);
-
-  }
-
-  $scope.initForm = function() {
-    if ($scope.incomes.length < 1) {
-      $scope.addIncome();
-    }
-    if ($scope.expenses.length < 1) {
-      $scope.addExpense();
-    }
-    if ($scope.nonRecurring.length < 1) {
-      $scope.addTransaction();
-    }
-  }
-
-  $scope.initForm();
+	$scope.initForm();
 
 }
