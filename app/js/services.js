@@ -31,6 +31,11 @@ servicesModule.factory('Storage', function () {
 	newServiceInstance.clear = function () {
 		localStorage.clear();
 	};
+
+	newServiceInstance.supported = function () {
+		return 'localStorage' in window && window['localStorage'] !== null;
+	};
+
 	
 	newServiceInstance.saveObject = function (objectToSave, key) {
 		// Save object to local storage under key
