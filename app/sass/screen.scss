@@ -52,7 +52,8 @@ button.btn-indented {
 }
 
 input {
-  &[type="text"] {
+  &[type="text"],
+  &[type="number"] {
     vertical-align: 0px;
   }
 }

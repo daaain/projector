@@ -74,7 +74,7 @@ function projectorCtrl($scope, Storage) {
 		var oneOff = 0;
 
 		for (var m = 0; m < $scope.nonRecurring.length; m++) {
-			oneOff = $scope.convertToNumber($scope.nonRecurring[m].amount);
+			oneOff = $scope.nonRecurring[m].amount;
 			if (oneOff !== 0) {
 				if ($scope.nonRecurring[m].active) {
 					total = total + oneOff;
@@ -89,7 +89,7 @@ function projectorCtrl($scope, Storage) {
 		var total = 0;
 		var thisMonth;
 		for (var i = 0; i < $scope.incomes.length; i++) {
-			thisMonth = $scope.convertToNumber($scope.incomes[i].amount);
+			thisMonth = $scope.incomes[i].amount;
 			if (thisMonth !== 0) {
 				if ($scope.incomes[i].active) {
 					total = total + (thisMonth * $scope.incomes[i].frequency);
@@ -103,7 +103,7 @@ function projectorCtrl($scope, Storage) {
 		var total = 0;
 		var thisMonth;
 		for (var i = 0; i < $scope.expenses.length; i++) {
-			thisMonth = $scope.convertToNumber($scope.expenses[i].amount);
+			thisMonth = $scope.expenses[i].amount;
 			if (thisMonth !== 0) {
 				if ($scope.expenses[i].active) {
 					total = total + (thisMonth * $scope.expenses[i].frequency);
@@ -130,8 +130,8 @@ function projectorCtrl($scope, Storage) {
 
 			// add applicable one-off transations
 			for (var m = 0; m < $scope.nonRecurring.length; m++) {
-				if ($scope.convertToNumber($scope.nonRecurring[m].month) === i + 1) {
-					oneOff = $scope.convertToNumber($scope.nonRecurring[m].amount);
+				if ($scope.nonRecurring[m].month === i + 1) {
+					oneOff = $scope.nonRecurring[m].amount;
 					if (oneOff !== 0) {
 						if ($scope.nonRecurring[m].active) {
 							runningTotal = runningTotal + oneOff;
@@ -157,16 +157,6 @@ function projectorCtrl($scope, Storage) {
 			year = year + 1;
 		}
 		return monthNames[futureMonth] + ' ' + year;
-	};
-
-	$scope.convertToNumber = function (value) {
-		var floatNumber = parseFloat(value);
-
-		if (floatNumber) {
-			return floatNumber;
-		} else {
-			return 0;
-		}
 	};
 
 	$scope.initForm = function () {

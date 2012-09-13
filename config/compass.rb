@@ -2,13 +2,13 @@
 require 'bootstrap-sass'
 
 # Set this to the root of your project when deployed:
-http_path = "/app"
+http_path = "app"
 http_images_path = "img"
-css_dir = "/app/css"
-sass_dir = "/app/sass"
-images_dir = "/app/compass_img"
-generated_images_dir = "/app/img"
-javascripts_dir = "/app/js"
+css_dir = "app/css"
+sass_dir = "app/sass"
+images_dir = "app/compass_img"
+generated_images_dir = "app/img"
+javascripts_dir = "app/js"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
