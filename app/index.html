@@ -67,8 +67,8 @@
 
         <div class="box">
           <h2>Any non-Recurring transactions?</h2>
-          <ul>
-            <li data-ng-repeat="transaction in nonRecurring" class="active-{{transaction.active}}">
+          <ul ng-init="predicateSingleTransactions='month'">
+            <li data-ng-repeat="transaction in nonRecurring | orderBy:predicateSingleTransactions" class="active-{{transaction.active}}">
               <span><input type="checkbox" data-ng-model="transaction.active"></span>
               <input type="text" data-ng-model="transaction.name" placeholder="e.g. Bonus..." class="span3" />
               <input type="number" step="0.01" data-ng-model="transaction.amount" class="span1" />
