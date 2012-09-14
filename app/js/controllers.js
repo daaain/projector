@@ -11,6 +11,24 @@ function projectorCtrl($scope, Storage) {
 	$scope.nonRecurring = Storage.getObject('nonRecurring');
 	$scope.storageSupport = Storage.supported();
 
+	/**
+	 * Beginning of section to be refactored into a service
+	 */
+
+	$scope.initForm = function () {
+		if ($scope.incomes.length < 1) {
+			$scope.addIncome();
+		}
+		if ($scope.expenses.length < 1) {
+			$scope.addExpense();
+		}
+		if ($scope.nonRecurring.length < 1) {
+			$scope.addTransaction();
+		}
+	};
+
+	$scope.initForm();
+
 	$scope.save = function () {
 		Storage.saveObject($scope.expenses, 'expenses');
 		Storage.saveObject($scope.incomes, 'incomes');
@@ -68,6 +86,10 @@ function projectorCtrl($scope, Storage) {
 	$scope.removeTransaction = function (index) {
 		$scope.nonRecurring.splice(index, 1);
 	};
+
+	/**
+	 * End of section to be refactored into a service
+	 */
 
 	$scope.tallyTransactions = function () {
 		var total = 0;
@@ -158,19 +180,5 @@ function projectorCtrl($scope, Storage) {
 		}
 		return monthNames[futureMonth] + ' ' + year;
 	};
-
-	$scope.initForm = function () {
-		if ($scope.incomes.length < 1) {
-			$scope.addIncome();
-		}
-		if ($scope.expenses.length < 1) {
-			$scope.addExpense();
-		}
-		if ($scope.nonRecurring.length < 1) {
-			$scope.addTransaction();
-		}
-	};
-
-	$scope.initForm();
 
 }
