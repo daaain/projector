@@ -10,7 +10,8 @@
 	"jquery"		:	true,		// jQuert globals
 	"predef"		:	[			// project globals
 		"angular",
-		"Pouch"
+		"Pouch",
+		"projectorApp"
 	],
 
 	// Development.

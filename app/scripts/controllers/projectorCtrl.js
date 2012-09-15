@@ -1,25 +1,5 @@
 'use strict';
 
-/* Controllers */
-
-function RecurringTransactionModel() {
-	return {
-		active: true,
-		name: '',
-		amount: 0,
-		frequency: 1
-	};
-}
-
-function SingleTransactionModel() {
-	return {
-		active: true,
-		name: '',
-		amount: 0,
-		month: 1
-	};
-}
-
 function projectorCtrl($scope, Storage) {
 
 	$scope.startBalance = Storage.getObject('startBalance');
@@ -170,6 +150,7 @@ function projectorCtrl($scope, Storage) {
 	// http://docs.angularjs.org/guide/i18n
 	// Once that's in place we can also use the currency filter too:
 	// http://docs.angularjs.org/api/ng.filter:currency
+	// https://groups.google.com/forum/#!msg/angular/8mAc7h5NBd4/UjtPpWFqfnYJ
 	$scope.getMonthLabel = function (monthAhead) {
 		var d = new Date();
 		var currentMonth = d.getMonth();

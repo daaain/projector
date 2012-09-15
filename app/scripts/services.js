@@ -14,6 +14,25 @@
 
 // Demonstrate how to register services
 // In this case it is a simple value service.
+
+function RecurringTransactionModel() {
+	return {
+		active: true,
+		name: '',
+		amount: 0,
+		frequency: 1
+	};
+}
+
+function SingleTransactionModel() {
+	return {
+		active: true,
+		name: '',
+		amount: 0,
+		month: 1
+	};
+}
+
 var servicesModule = angular.module('projectorApp.services', []);
 
 servicesModule.value('version', '0.1');
