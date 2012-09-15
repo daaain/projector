@@ -1,6 +1,6 @@
 'use strict';
 
-function projectorCtrl($scope, Storage) {
+projectorApp.controller('projectorCtrl', function ($scope, Storage) {
 
 	$scope.startBalance = Storage.getObject('startBalance');
 	$scope.expenses = Storage.getObject('expenses');
@@ -11,20 +11,6 @@ function projectorCtrl($scope, Storage) {
 	/**
 	 * Beginning of section to be refactored into a service
 	 */
-
-	$scope.initForm = function () {
-		if ($scope.incomes.length < 1) {
-			$scope.addIncome();
-		}
-		if ($scope.expenses.length < 1) {
-			$scope.addExpense();
-		}
-		if ($scope.nonRecurring.length < 1) {
-			$scope.addTransaction();
-		}
-	};
-
-	$scope.initForm();
 
 	$scope.save = function () {
 		Storage.saveObject($scope.expenses, 'expenses');
@@ -65,6 +51,20 @@ function projectorCtrl($scope, Storage) {
 	$scope.removeTransaction = function (index) {
 		$scope.nonRecurring.splice(index, 1);
 	};
+
+	$scope.initForm = function () {
+		if ($scope.incomes.length < 1) {
+			$scope.addIncome();
+		}
+		if ($scope.expenses.length < 1) {
+			$scope.addExpense();
+		}
+		if ($scope.nonRecurring.length < 1) {
+			$scope.addTransaction();
+		}
+	};
+
+	$scope.initForm();
 
 	/**
 	 * End of section to be refactored into a service
@@ -165,4 +165,4 @@ function projectorCtrl($scope, Storage) {
 		return monthNames[futureMonth] + ' ' + year;
 	};
 
-}
+});
