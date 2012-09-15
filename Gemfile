@@ -7,5 +7,6 @@ gem "rack-livereload"
 
 gem "guard"
 gem 'rb-fsevent'
+gem 'rb-inotify'
 gem "guard-compass"
 gem "guard-livereload"

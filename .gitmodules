@@ -1,0 +1,3 @@
+[submodule "app/scripts/vendor/angular-pouchdb-service"]
+	path = app/scripts/vendor/angular-pouchdb-service
+	url = git://github.com/daaain/angular-pouchdb-service.git
