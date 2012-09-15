@@ -2,6 +2,8 @@
 
 Balance Projector can provide quick insights into your immediate financial future. The real time interface updates on every change and makes somewhat abstract numbers very tangible.
 
+You can see a working version of it at: [http://daaain.github.com/projector/app/index.html](http://daaain.github.com/projector/app/index.html)
+
 Built with: 
 * [Google AngularJS](http://angularjs.org/)
 * Twitter Bootstrap – Sass version
