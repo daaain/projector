@@ -2,6 +2,15 @@
 
 /* Services */
 
+// CRUD service wrapper could be a nice curry? :)
+// http://www.gridlinked.info/understanding-function-currying/
+
+// Using promises
+// http://jsfiddle.net/dain/QjnML/4/
+// http://stackoverflow.com/questions/12115151/angularjs-service-with-promises
+
+// PouchDB in Angular
+// http://jsfiddle.net/zrrrzzt/cNVhE/
 
 // Demonstrate how to register services
 // In this case it is a simple value service.

@@ -166,6 +166,8 @@ function projectorCtrl($scope, Storage) {
 		return monthByMonth;
 	};
 
+	// Refactor: should come from localisation library
+	// http://docs.angularjs.org/guide/i18n
 	$scope.getMonthLabel = function (monthAhead) {
 		var d = new Date();
 		var currentMonth = d.getMonth();
