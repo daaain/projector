@@ -128,6 +128,7 @@ projectorApp.controller('projectorCtrl', function ($scope, ProjectorAppORMServic
 		return income - expense;
 	};
 
+  $scope.chartTable = [];
 	$scope.montlyProjection = function () {
 		var monthByMonth = [];
 		var runningTotal = 0;
@@ -149,6 +150,7 @@ projectorApp.controller('projectorCtrl', function ($scope, ProjectorAppORMServic
 			}
 
 			monthByMonth[i] = runningTotal;
+      $scope.chartTable[i] = [ $scope.getMonthLabel(i), runningTotal, $scope.startBalance + runningTotal ];
 		}
 		return monthByMonth;
 	};
@@ -171,5 +173,19 @@ projectorApp.controller('projectorCtrl', function ($scope, ProjectorAppORMServic
 		}
 		return monthNames[futureMonth] + ' ' + year;
 	};
+
+  $scope.chartHeader = [
+    ['string', 'Month'],
+    ['number', 'Accumulated net income'],
+    ['number', 'Balance']
+  ];
+
+  $scope.monthlyProjectionTable = function() {
+    var monthlyProjection = $scope.montlyProjection();
+    var arr = [  ];
+		for (var i = 0; i < 12; i++) {
+      arr.push(  );
+    }
+  }
 
 });
