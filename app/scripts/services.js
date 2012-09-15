@@ -66,12 +66,12 @@ projectorAppORMServiceInstance.factory('ProjectorAppORMServiceInstance', functio
 		};
 	};
 	projectorAppORMServiceInstance.RecurringTransactionModel = function() {
-		var model = new TransactionModel();
+		var model = new projectorAppORMServiceInstance.TransactionModel();
 		model.frequency = 1;
 		return model;
 	};
 	projectorAppORMServiceInstance.SingleTransactionModel = function() {
-		var model = new TransactionModel();
+		var model = new projectorAppORMServiceInstance.TransactionModel();
 		model.date = new Date();
 		return model;
 	};
