@@ -168,6 +168,8 @@ function projectorCtrl($scope, Storage) {
 
 	// Refactor: should come from localisation library
 	// http://docs.angularjs.org/guide/i18n
+	// Once that's in place we can also use the currency filter too:
+	// http://docs.angularjs.org/api/ng.filter:currency
 	$scope.getMonthLabel = function (monthAhead) {
 		var d = new Date();
 		var currentMonth = d.getMonth();
