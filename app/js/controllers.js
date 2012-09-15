@@ -2,6 +2,23 @@
 
 /* Controllers */
 
+function RecurringTransactionModel() {
+	return {
+		active: true,
+		name: '',
+		amount: 0,
+		frequency: 1
+	};
+}
+
+function SingleTransactionModel() {
+	return {
+		active: true,
+		name: '',
+		amount: 0,
+		month: 1
+	};
+}
 
 function projectorCtrl($scope, Storage) {
 
@@ -46,13 +63,7 @@ function projectorCtrl($scope, Storage) {
 	};
 
 	$scope.addExpense = function () {
-		var newEmptyExpense = {
-			active: true,
-			name: '',
-			amount: 0,
-			frequency: 1
-		};
-		$scope.expenses.push(newEmptyExpense);
+		$scope.expenses.push(new RecurringTransactionModel());
 	};
 
 	$scope.removeExpense = function (index) {
@@ -60,13 +71,7 @@ function projectorCtrl($scope, Storage) {
 	};
 
 	$scope.addIncome = function () {
-		var newEmptyIncome = {
-			active: true,
-			name: '',
-			amount: 0,
-			frequency: 1
-		};
-		$scope.incomes.push(newEmptyIncome);
+		$scope.incomes.push(new RecurringTransactionModel());
 	};
 
 	$scope.removeIncome = function (index) {
@@ -74,13 +79,7 @@ function projectorCtrl($scope, Storage) {
 	};
 
 	$scope.addTransaction = function () {
-		var newEmptyTransaction = {
-			active: true,
-			name: '',
-			amount: 0,
-			month: 1
-		};
-		$scope.nonRecurring.push(newEmptyTransaction);
+		$scope.nonRecurring.push(new SingleTransactionModel());
 	};
 
 	$scope.removeTransaction = function (index) {
