@@ -11,7 +11,8 @@
 	"predef"		:	[			// project globals
 		"angular",
 		"Pouch",
-		"projectorApp"
+		"projectorApp",
+		"google"
 	],
 
 	// Development.

@@ -57,7 +57,7 @@ projectorAppORMServiceInstance.factory('ProjectorAppORMServiceInstance', functio
 
 	var projectorAppORMServiceInstance = new LocalStorageService();
 
-	projectorAppORMServiceInstance.TransactionModel = function() {
+	projectorAppORMServiceInstance.TransactionModel = function () {
 		return {
 			active: true,
 			name: '',
@@ -65,12 +65,12 @@ projectorAppORMServiceInstance.factory('ProjectorAppORMServiceInstance', functio
 			valid: false
 		};
 	};
-	projectorAppORMServiceInstance.RecurringTransactionModel = function() {
+	projectorAppORMServiceInstance.RecurringTransactionModel = function () {
 		var model = new projectorAppORMServiceInstance.TransactionModel();
 		model.frequency = 1;
 		return model;
 	};
-	projectorAppORMServiceInstance.SingleTransactionModel = function() {
+	projectorAppORMServiceInstance.SingleTransactionModel = function () {
 		var model = new projectorAppORMServiceInstance.TransactionModel();
 		model.date = new Date();
 		return model;

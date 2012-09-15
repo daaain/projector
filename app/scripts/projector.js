@@ -19,7 +19,7 @@ var projectorApp = angular.module('projectorApp',
 			});
 	}]);
 
-google.load("visualization", "1", {packages:["corechart"]});
-google.setOnLoadCallback(function() {
-  angular.bootstrap(document.body, ['projectorApp']);
+google.load("visualization", "1", {packages: ["corechart"]});
+google.setOnLoadCallback(function () {
+	angular.bootstrap(document.body, ['projectorApp']);
 });

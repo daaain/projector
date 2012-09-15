@@ -85,7 +85,7 @@
       </thead>
       <tbody>
         <tr data-ng-repeat="change in montlyProjection();">
-          <td>{{getMonthLabel($index+1)}}</td>
+          <td>{{getMonthLabel($index)}}</td>
           <td class="number">{{change | number:2}}</td>
           <td class="number" data-ng-class="(startBalance) + (change) | positiveNegative">{{(startBalance) + (change) | number:2}}</td>
         </tr>

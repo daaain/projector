@@ -8,13 +8,6 @@ projectorApp.controller('projectorCtrl', function ($scope, ProjectorAppORMServic
 	$scope.nonRecurring = ProjectorAppORMServiceInstance.getObject('nonRecurring');
 	$scope.storageSupport = ProjectorAppORMServiceInstance.supported();
 
-	// $scope.nonRecurring = Storage.createModel('nonRecurring', {
-	// 	active: true,
-	// 	name: '',
-	// 	amount: 0,
-	// 	frequency: 1
-	// }, []);
-
 	/**
 	 * Beginning of section to be refactored into a service
 	 */
@@ -128,18 +121,24 @@ projectorApp.controller('projectorCtrl', function ($scope, ProjectorAppORMServic
 		return income - expense;
 	};
 
-  $scope.chartTable = [];
+	$scope.chartTable = [];
+	$scope.chartHeader = [
+		['string', 'Month'],
+		['number', 'Accumulated net income'],
+		['number', 'Balance']
+	];
 	$scope.montlyProjection = function () {
 		var monthByMonth = [];
 		var runningTotal = 0;
 		var oneOff = 0;
+		var currentMonth = new Date().getMonth();
 
 		for (var i = 0; i < 12; i++) {
 			runningTotal = runningTotal + $scope.monthlyNet();
 
 			// add applicable one-off transations
 			for (var m = 0; m < $scope.nonRecurring.length; m++) {
-				if ($scope.nonRecurring[m].month === i + 1) {
+				if (new Date($scope.nonRecurring[m].date).getMonth() === (currentMonth + i) % 12) {
 					oneOff = $scope.nonRecurring[m].amount;
 					if (oneOff !== 0) {
 						if ($scope.nonRecurring[m].active) {
@@ -150,7 +149,7 @@ projectorApp.controller('projectorCtrl', function ($scope, ProjectorAppORMServic
 			}
 
 			monthByMonth[i] = runningTotal;
-      $scope.chartTable[i] = [ $scope.getMonthLabel(i), runningTotal, $scope.startBalance + runningTotal ];
+			$scope.chartTable[i] = [ $scope.getMonthLabel(i), runningTotal, $scope.startBalance + runningTotal ];
 		}
 		return monthByMonth;
 	};
@@ -173,19 +172,4 @@ projectorApp.controller('projectorCtrl', function ($scope, ProjectorAppORMServic
 		}
 		return monthNames[futureMonth] + ' ' + year;
 	};
-
-  $scope.chartHeader = [
-    ['string', 'Month'],
-    ['number', 'Accumulated net income'],
-    ['number', 'Balance']
-  ];
-
-  $scope.monthlyProjectionTable = function() {
-    var monthlyProjection = $scope.montlyProjection();
-    var arr = [  ];
-		for (var i = 0; i < 12; i++) {
-      arr.push(  );
-    }
-  }
-
 });
