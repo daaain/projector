@@ -47,14 +47,14 @@
 
     <div class="box">
       <h2>Any non-Recurring transactions?</h2>
-      <ul ng-init="predicateSingleTransactions='month'">
-        <li data-ng-repeat="transaction in nonRecurring | orderBy:predicateSingleTransactions" class="active-{{transaction.active}}">
+      <ul>
+        <li data-ng-repeat="transaction in nonRecurring" class="active-{{transaction.active}}">
           <span><input type="checkbox" data-ng-model="transaction.active"></span>
           <input type="text" data-ng-model="transaction.name" placeholder="e.g. Bonus..." class="span3" />
           <input type="number" step="0.01" data-ng-model="transaction.amount" class="span1" />
-          <select class="span2" data-ng-model='transaction.month' data-ng-options="getMonthLabel(value) for value in [1,2,3,4,5,6,7,8,9,10,11,12]">
+          <input type="date" class="span2" data-ng-model='transaction.date' />
           </select>
-          <a class="" data-ng-click="removeTransaction($index);"><i class="icon-minus-sign"></i></a>
+          <a data-ng-click="removeTransaction($index);"><i class="icon-minus-sign"></i></a>
         </li>
       </ul>
       <button class="btn btn-indented" data-ng-click="addTransaction();"><i class="icon-plus"></i> Add</button>

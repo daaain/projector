@@ -7399,44 +7399,44 @@ button.btn-indented {
   margin-left: 18px;
 }
 
-/* line 56, ../sass/screen.scss */
-input[type="text"], input[type="number"] {
+/* line 57, ../sass/screen.scss */
+input[type="text"], input[type="number"], input[type="date"] {
   vertical-align: 0px;
 }
 
-/* line 61, ../sass/screen.scss */
+/* line 62, ../sass/screen.scss */
 select {
   vertical-align: 0px;
 }
 
-/* line 65, ../sass/screen.scss */
+/* line 66, ../sass/screen.scss */
 table {
   background-color: #FFF;
   border-top: 1px solid #DDD;
 }
-/* line 68, ../sass/screen.scss */
+/* line 69, ../sass/screen.scss */
 table td, table th {
   padding: 12px 10px !important;
   font-size: 1.1em;
 }
-/* line 71, ../sass/screen.scss */
+/* line 72, ../sass/screen.scss */
 table td.number, table th.number {
   text-align: right;
 }
-/* line 74, ../sass/screen.scss */
+/* line 75, ../sass/screen.scss */
 table td.positive, table th.positive {
   color: green;
 }
-/* line 77, ../sass/screen.scss */
+/* line 78, ../sass/screen.scss */
 table td.negative, table th.negative {
   color: red;
 }
-/* line 81, ../sass/screen.scss */
+/* line 82, ../sass/screen.scss */
 table th {
   color: #00A8C6;
 }
 
-/* line 86, ../sass/screen.scss */
+/* line 87, ../sass/screen.scss */
 .box {
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -7446,16 +7446,16 @@ table th {
   margin-bottom: 20px;
 }
 
-/* line 91, ../sass/screen.scss */
+/* line 92, ../sass/screen.scss */
 .store {
   margin-top: 40px;
 }
-/* line 93, ../sass/screen.scss */
+/* line 94, ../sass/screen.scss */
 .store p {
   color: #999;
 }
 
-/* line 98, ../sass/screen.scss */
+/* line 99, ../sass/screen.scss */
 #top {
   background-color: #8FBE00;
   margin-bottom: 40px;
@@ -7466,7 +7466,7 @@ table th {
   -moz-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
 }
-/* line 105, ../sass/screen.scss */
+/* line 106, ../sass/screen.scss */
 #top h1 {
   font-size: 4em;
   margin-bottom: 20px;
@@ -7474,36 +7474,36 @@ table th {
   color: #FFF;
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
 }
-/* line 112, ../sass/screen.scss */
+/* line 113, ../sass/screen.scss */
 #top p {
   font-size: 1.5em;
   color: #F9F2E7;
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
 }
 
-/* line 119, ../sass/screen.scss */
+/* line 120, ../sass/screen.scss */
 #section_about {
   margin-bottom: 4em;
 }
-/* line 122, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
 #section_about h1 {
   font-size: 3em;
 }
-/* line 125, ../sass/screen.scss */
+/* line 126, ../sass/screen.scss */
 #section_about h2 {
   font-size: 2em;
 }
-/* line 129, ../sass/screen.scss */
+/* line 130, ../sass/screen.scss */
 #section_about article {
   font-size: 1.2em;
   line-height: 1.6em;
   margin-top: 2em;
 }
-/* line 134, ../sass/screen.scss */
+/* line 135, ../sass/screen.scss */
 #section_about article h2 {
   font-size: 1.2em;
 }
-/* line 139, ../sass/screen.scss */
+/* line 140, ../sass/screen.scss */
 #section_about .launch {
   margin-top: 2em;
 }

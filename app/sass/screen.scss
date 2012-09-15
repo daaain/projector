@@ -53,7 +53,8 @@ button.btn-indented {
 
 input {
   &[type="text"],
-  &[type="number"] {
+  &[type="number"],
+  &[type="date"] {
     vertical-align: 0px;
   }
 }
