@@ -1,26 +1,33 @@
 'use strict';
 
-projectorApp.controller('projectorCtrl', function ($scope, Storage) {
+projectorApp.controller('projectorCtrl', function ($scope, ProjectorAppORMServiceInstance) {
 
-	$scope.startBalance = Storage.getObject('startBalance');
-	$scope.expenses = Storage.getObject('expenses');
-	$scope.incomes = Storage.getObject('incomes');
-	$scope.nonRecurring = Storage.getObject('nonRecurring');
-	$scope.storageSupport = Storage.supported();
+	$scope.startBalance = ProjectorAppORMServiceInstance.getObject('startBalance');
+	$scope.expenses = ProjectorAppORMServiceInstance.getObject('expenses');
+	$scope.incomes = ProjectorAppORMServiceInstance.getObject('incomes');
+	$scope.nonRecurring = ProjectorAppORMServiceInstance.getObject('nonRecurring');
+	$scope.storageSupport = ProjectorAppORMServiceInstance.supported();
+
+	// $scope.nonRecurring = Storage.createModel('nonRecurring', {
+	// 	active: true,
+	// 	name: '',
+	// 	amount: 0,
+	// 	frequency: 1
+	// }, []);
 
 	/**
 	 * Beginning of section to be refactored into a service
 	 */
 
 	$scope.save = function () {
-		Storage.saveObject($scope.expenses, 'expenses');
-		Storage.saveObject($scope.incomes, 'incomes');
-		Storage.saveObject($scope.startBalance, 'startBalance');
-		Storage.saveObject($scope.nonRecurring, 'nonRecurring');
+		ProjectorAppORMServiceInstance.saveObject($scope.expenses, 'expenses');
+		ProjectorAppORMServiceInstance.saveObject($scope.incomes, 'incomes');
+		ProjectorAppORMServiceInstance.saveObject($scope.startBalance, 'startBalance');
+		ProjectorAppORMServiceInstance.saveObject($scope.nonRecurring, 'nonRecurring');
 	};
 
 	$scope.clear = function () {
-		Storage.clear();
+		ProjectorAppORMServiceInstance.clear();
 		$scope.startBalance = [];
 		$scope.expenses = [];
 		$scope.incomes = [];
@@ -29,7 +36,7 @@ projectorApp.controller('projectorCtrl', function ($scope, Storage) {
 	};
 
 	$scope.addExpense = function () {
-		$scope.expenses.push(new RecurringTransactionModel());
+		$scope.expenses.push(ProjectorAppORMServiceInstance.RecurringTransactionModel());
 	};
 
 	$scope.removeExpense = function (index) {
@@ -37,7 +44,7 @@ projectorApp.controller('projectorCtrl', function ($scope, Storage) {
 	};
 
 	$scope.addIncome = function () {
-		$scope.incomes.push(new RecurringTransactionModel());
+		$scope.incomes.push(ProjectorAppORMServiceInstance.RecurringTransactionModel());
 	};
 
 	$scope.removeIncome = function (index) {
@@ -45,7 +52,7 @@ projectorApp.controller('projectorCtrl', function ($scope, Storage) {
 	};
 
 	$scope.addTransaction = function () {
-		$scope.nonRecurring.push(new SingleTransactionModel());
+		$scope.nonRecurring.push(ProjectorAppORMServiceInstance.SingleTransactionModel());
 	};
 
 	$scope.removeTransaction = function (index) {

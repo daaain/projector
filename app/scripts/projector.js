@@ -2,7 +2,7 @@
 
 // Declare app level module which depends on filters, and services
 var projectorApp = angular.module('projectorApp',
-		['projectorApp.filters', 'projectorApp.services', 'projectorApp.directives']
+		['projectorApp.filters', 'projectorApp.projectorAppORMServiceInstance', 'projectorApp.directives']
 	)
 	.config(['$routeProvider', function ($routeProvider) {
 		$routeProvider

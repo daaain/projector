@@ -1,7 +1,5 @@
 'use strict';
 
-/* Services */
-
 // CRUD service wrapper could be a nice curry? :)
 // http://www.gridlinked.info/understanding-function-currying/
 
@@ -12,37 +10,14 @@
 // PouchDB in Angular
 // http://jsfiddle.net/zrrrzzt/cNVhE/
 
-// Demonstrate how to register services
-// In this case it is a simple value service.
-
-function RecurringTransactionModel() {
-	return {
-		active: true,
-		name: '',
-		amount: 0,
-		frequency: 1
-	};
-}
-
-function SingleTransactionModel() {
-	return {
-		active: true,
-		name: '',
-		amount: 0,
-		month: 1
-	};
-}
-
-var servicesModule = angular.module('projectorApp.services', []);
-
+var servicesModule = angular.module('LocalStorageService', []);
 servicesModule.value('version', '0.1');
-
-servicesModule.factory('Storage', function () {
+servicesModule.factory('LocalStorageService', function () {
 
 	//factory function body that constructs newServiceInstance
-	var newServiceInstance = {};
+	var newServiceInstance = function () {};
 
-	newServiceInstance.getObject = function (key) {
+	newServiceInstance.prototype.getObject = function (key) {
 		// variable to hold date found in local storage
 		var data = [];
 
@@ -56,20 +31,50 @@ servicesModule.factory('Storage', function () {
 		return data;
 	};
 
-	newServiceInstance.clear = function () {
+	newServiceInstance.prototype.clear = function () {
 		localStorage.clear();
 	};
 
-	newServiceInstance.supported = function () {
+	newServiceInstance.prototype.supported = function () {
 		return 'localStorage' in window && window['localStorage'] !== null;
 	};
 
 	
-	newServiceInstance.saveObject = function (objectToSave, key) {
+	newServiceInstance.prototype.saveObject = function (objectToSave, key) {
 		// Save object to local storage under key
 		localStorage[key] = JSON.stringify(objectToSave);
 	};
 	
 	return newServiceInstance;
+
+});
+
+var projectorAppORMServiceInstance = angular.module('projectorApp.projectorAppORMServiceInstance',
+		['LocalStorageService']
+	);
+projectorAppORMServiceInstance.value('version', '0.1');
+projectorAppORMServiceInstance.factory('ProjectorAppORMServiceInstance', function (LocalStorageService) {
+
+	var projectorAppORMServiceInstance = new LocalStorageService();
+
+	projectorAppORMServiceInstance.RecurringTransactionModel = function () {
+		return {
+			active: true,
+			name: '',
+			amount: 0,
+			frequency: 1
+		};
+	};
+
+	projectorAppORMServiceInstance.SingleTransactionModel = function () {
+		return {
+			active: true,
+			name: '',
+			amount: 0,
+			month: 1
+		};
+	};
+
+	return projectorAppORMServiceInstance;
 
 });
