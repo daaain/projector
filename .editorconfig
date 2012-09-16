@@ -1,0 +1,36 @@
+; This file is for unifying the coding style for different editors and IDEs.
+; More information at http://EditorConfig.org
+
+root = true
+
+; *********
+; tabs
+; *********
+
+[**.js]
+indent_style = tab
+
+[**.html]
+indent_style = tab
+
+[**.scss]
+indent_style = tab
+
+[**.xml]
+indent_style = tab
+
+; *********
+; spaces
+; *********
+
+[**.css]
+indent_style = space
+indent_size = 2
+
+[**.rb]
+indent_style = space
+indent_size = 2
+
+[**.yml]
+indent_style = space
+indent_size = 2
