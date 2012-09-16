@@ -27,7 +27,8 @@ Or just use any other Rack based webserver like [Thin](http://code.macournoyer.c
 ## TODO
 
 * Start using [Yeoman](http://yeoman.io/)
+* With that, use Bower to include Bootstrap and possibly the Angular - PouchDB connector
 * Get a reasonably abstracted service running with deferred / promise interface using the current LocalStorage backend
 * Implement PouchDB backend which is interchangeable with LocalStorage
 * Write tests!
-* Document the various Angular.js feature used in the app
+* Document the various Angular.js features used in the app
