@@ -13,9 +13,65 @@ Built with:
 
 Heavily based on: [https://github.com/SimplyDo/projector](https://github.com/SimplyDo/projector)
 
-## Instructions
+## Angular.js feature highlights (WIP)
 
-Simply point a web server to the '/app' directory of this repository and view in any modern browser.
+### RouteProvider
+
+* Basic route setup
+* Controller resolve (in progress)
+
+### Views
+
+* Using separate view templates
+
+### Markup / data-ng attributes
+
+* data-ng-class
+* data-ng-click
+* data-ng-repeat
+* data-ng-model
+* data-ng-view
+* ng-cloak class="ng-cloak"
+
+### Filters
+
+Filters are powerful tools to simplify expressions in the markup.
+
+In order to be able to set colours of amounts based on whether they are negative or positive, we can define this simple filter:
+
+```
+.filter('positiveNegative', function () {
+	return function (value) {
+		return value < 0 ? 'negative' : 'positive';
+	};
+});
+```
+
+Which is then possible to use in HTML to decide which CSS class to apply:
+
+```
+<td class="number" data-ng-class="(startBalance) + (change) | positiveNegative">
+	{{(startBalance) + (change) | number:2}}
+</td>
+```
+
+You might have spotted that we're also using the built in `number` filter which accepts a parameter for decimal place rounding.
+
+### Directives
+
+* Rendering a chart with a directive
+
+### Services / factories
+
+* Loading data with Promises using a Service (in progress)
+
+## Setup instructions
+
+### Using Yeoman
+
+Coming soon
+
+### Using Ruby Rack
 
 If you have [Pow](http://pow.cx/) and [Powify](https://github.com/sethvargo/powify), you can run the app as simply as:
 
@@ -23,6 +79,10 @@ If you have [Pow](http://pow.cx/) and [Powify](https://github.com/sethvargo/powi
 	powify browse projector
 
 Or just use any other Rack based webserver like [Thin](http://code.macournoyer.com/thin/).
+
+### Anything else
+
+Or just simply point a web server to the '/app' directory of this repository and view in any modern browser.
 
 ## TODO
 
@@ -32,3 +92,4 @@ Or just use any other Rack based webserver like [Thin](http://code.macournoyer.c
 * Implement PouchDB backend which is interchangeable with LocalStorage
 * Write tests!
 * Document the various Angular.js features used in the app
+* Use built localisation for currency formatting
